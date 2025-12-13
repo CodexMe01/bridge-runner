@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bridge Runner - Epic Temple Run Game</title>
+    <meta name="description" content="An exciting endless runner game where you jump across bridges and avoid falling into fire!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- Header with Score and Controls -->
+        <div class="header">
+            <div class="logo">
+                <h1>🏃 BRIDGE RUNNER</h1>
+            </div>
+            <div class="score-display">
+                <div class="score-label">DISTANCE</div>
+                <div class="score-value" id="scoreValue">0m</div>
+            </div>
+            <div class="controls-hint">
+                <span class="key-hint">SPACE</span> to Jump
+            </div>
+        </div>
+
+        <!-- Game Canvas -->
+        <div class="canvas-wrapper">
+            <canvas id="gameCanvas" width="800" height="600"></canvas>
+            
+            <!-- Game Over Screen -->
+            <div class="game-over-screen" id="gameOverScreen">
+                <div class="game-over-popup">
+                    <div class="popup-content">
+                        <img id="gameOverImage" src="amit.jpg" alt="Game Over" class="game-over-img">
+                        <h2 class="game-over-title">GAME OVER</h2>
+                        <div class="final-score">
+                            <span class="final-score-label">Final Distance:</span>
+                            <span class="final-score-value" id="finalScore">0m</span>
+                        </div>
+                        <button class="restart-btn" id="restartBtn">
+                            <span class="btn-icon">↻</span> RESTART GAME
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Start Screen -->
+            <div class="start-screen" id="startScreen">
+                <div class="start-popup">
+                    <h1 class="start-title">🏃 BRIDGE RUNNER</h1>
+                    <p class="start-subtitle">Jump across bridges and survive as long as you can!</p>
+                    <div class="instructions">
+                        <div class="instruction-item">
+                            <span class="instruction-icon">⌨️</span>
+                            <span>Press <strong>SPACE</strong> to jump</span>
+                        </div>
+                        <div class="instruction-item">
+                            <span class="instruction-icon">🔥</span>
+                            <span>Avoid falling into the fire below</span>
+                        </div>
+                        <div class="instruction-item">
+                            <span class="instruction-icon">🏆</span>
+                            <span>Run as far as you can!</span>
+                        </div>
+                    </div>
+                    <button class="start-btn" id="startBtn">
+                        <span class="btn-glow"></span>
+                        START GAME
+                    </button>
+                </div>
+            </div>
+
+            <!-- Loading Screen -->
+            <div class="loading-screen" id="loadingScreen">
+                <div class="loader"></div>
+                <p class="loading-text">Loading Assets...</p>
+            </div>
+        </div>
+
+        <!-- Footer Info -->
+        <div class="footer">
+            <div class="footer-content">
+                <p>Created with ❤️ | Share this game with your friends!</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
