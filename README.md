@@ -2,11 +2,16 @@
 
 A simple endless runner game made with Python and Pygame.
 
+## 🎮 Play Online
+**Play the game now:** https://codexme01.github.io/bridge-runner/
+
+The web version works on any device with a modern browser - no installation needed!
+
 ## Controls
 - **Space**: Jump
 - **Space (after Game Over)**: Restart
 
-## Setup
+## Desktop Version Setup
 1. Ensure Python is installed.
 2. Install Pygame:
    ```bash
