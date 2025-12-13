@@ -33,6 +33,47 @@ const assets = {
     backgroundMusic: null
 };
 
+// Audio Context for Jump Sound
+let audioContext = null;
+
+// Initialize Audio Context (must be done after user interaction)
+function initAudioContext() {
+    if (!audioContext) {
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    return audioContext;
+}
+
+// Create Jump Sound Effect using Web Audio API
+function playJumpSound() {
+    try {
+        const ctx = initAudioContext();
+
+        // Create oscillator for the "boing" effect
+        const oscillator = ctx.createOscillator();
+        const gainNode = ctx.createGain();
+
+        // Connect nodes
+        oscillator.connect(gainNode);
+        gainNode.connect(ctx.destination);
+
+        // Configure the sound - creates a pleasant "boing" jump sound
+        oscillator.type = 'sine';
+        oscillator.frequency.setValueAtTime(400, ctx.currentTime); // Start frequency
+        oscillator.frequency.exponentialRampToValueAtTime(200, ctx.currentTime + 0.1); // Slide down
+
+        // Volume envelope - quick attack, quick decay
+        gainNode.gain.setValueAtTime(0.3, ctx.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.2);
+
+        // Play the sound
+        oscillator.start(ctx.currentTime);
+        oscillator.stop(ctx.currentTime + 0.2);
+    } catch (error) {
+        console.log('Jump sound failed:', error);
+    }
+}
+
 // Canvas Setup
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
@@ -106,6 +147,7 @@ class Player {
             this.velocityY = config.jumpStrength;
             this.jumping = true;
             this.onGround = false;
+            playJumpSound(); // Play jump sound effect
         }
     }
 
