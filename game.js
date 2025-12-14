@@ -30,7 +30,8 @@ const assets = {
     background: null,
     gameOverImage: null,
     screamSound: null,
-    backgroundMusic: null
+    backgroundMusic: null,
+    jumpSound: null
 };
 
 // Audio Context for Jump Sound
@@ -45,7 +46,14 @@ function initAudioContext() {
 }
 
 // Create Jump Sound Effect using Web Audio API
+// Create Jump Sound Effect using Web Audio API
 function playJumpSound() {
+    if (assets.jumpSound) {
+        assets.jumpSound.currentTime = 0;
+        assets.jumpSound.play().catch(e => console.log('Jump sound play failed:', e));
+        return;
+    }
+
     try {
         const ctx = initAudioContext();
 
@@ -227,6 +235,7 @@ async function loadAssets() {
         // Load audio
         assets.screamSound = await loadAudio('Game over sound.mp3');
         assets.backgroundMusic = await loadAudio('background_music.mp3');
+        assets.jumpSound = await loadAudio('jump.mp3');
 
         if (assets.backgroundMusic) {
             assets.backgroundMusic.loop = true;
