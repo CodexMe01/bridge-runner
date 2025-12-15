@@ -67,7 +67,7 @@ pygame.mixer.init(frequency=44100, size=-16, channels=2, buffer=512)
 background_music_loaded = False
 if os.path.exists("background_music.mp3"):
     try:
-        pygame.mixer.music.load("background_music.mp3")
+        pygame.mixer.music.load("backgrouhnd_music.mp3")
         pygame.mixer.music.set_volume(0.3)  # Lower volume for background
         pygame.mixer.music.play(-1)  # Loop indefinitely
         background_music_loaded = True
