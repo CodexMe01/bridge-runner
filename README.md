@@ -3,7 +3,7 @@
 A simple endless runner game made with Python and Pygame.
 
 ## 🎮 Play Online
-**Play the game now:** https://codexme01.github.io/bridge-runner/
+**Play the game now:** https://codexme01.github.io/bridge-runnr/
 
 The web version works on any device with a modern browser - no installation needed!
 
